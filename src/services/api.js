@@ -4,18 +4,18 @@ import axios from 'axios'
 const FRED_API_KEY = import.meta.env.VITE_FRED_API_KEY || '45995be636090700d8281300e3179454'
 const ALPHA_VANTAGE_API_KEY = import.meta.env.VITE_ALPHA_VANTAGE_API_KEY || 'QDQ4G54QZZFACCWN'
 
-// FRED API 기본 설정
+// FRED API 기본 설정 (CORS 프록시 사용)
 const fredApi = axios.create({
-  baseURL: 'https://api.stlouisfed.org/fred',
+  baseURL: 'https://cors-anywhere.herokuapp.com/https://api.stlouisfed.org/fred',
   params: {
     api_key: FRED_API_KEY,
     file_type: 'json'
   }
 })
 
-// Alpha Vantage API 기본 설정
+// Alpha Vantage API 기본 설정 (CORS 프록시 사용)
 const alphaVantageApi = axios.create({
-  baseURL: 'https://www.alphavantage.co/query'
+  baseURL: 'https://cors-anywhere.herokuapp.com/https://www.alphavantage.co/query'
 })
 
 // 연준 대차대조표 데이터 가져오기
